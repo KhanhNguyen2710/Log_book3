@@ -45,9 +45,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        database = new Database(MainActivity.this);
-        Cursor cursor = database.ReadUrlImg();
-
         imageView = findViewById(R.id.imgView);
         URL_input = findViewById(R.id.URL_input);
 
@@ -55,28 +52,12 @@ public class MainActivity extends AppCompatActivity {
         Add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GetUrlInput();
-
-                Database database = new Database(MainActivity.this);
-                boolean result = database.AddUrlImg(URL_input.getText().toString());
-                if(result) {
-                    Toast.makeText(MainActivity.this, "Added Success", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(MainActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-                }
+                Database myDB = new Database(MainActivity.this);
+             //   boolean result = database.AddUrlImg(URL_input.getText().toString());
 
                 String url = URL_input.getText().toString();
+                myDB.AddUrlImg(url);
 
-                   /* if(!(url.length() == 0)) {
-                        urlList.add(url);
-                        i = urlList.size() - 1;
-                        Picasso.get()
-                                .load(urlList.get(i))
-                                .into(imageView);
-                    }else{
-                        Toast.makeText(MainActivity.this, "Invalid url", Toast.LENGTH_SHORT).show();
-
-                    }*/
                 if (IsValidUrl(url)){
                     if(!(url.length() ==0)){
                         urlList.add(url);
@@ -132,13 +113,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    private void GetUrlInput() {
-        EditText urlInput = findViewById(R.id.URL_input);
-        String url = urlInput.getText().toString();
-    }
 
     void storeData() {
-        Cursor cursor = database.ReadUrlImg();
+        Cursor cursor = database.readUrlImg();
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "No data.", Toast.LENGTH_SHORT).show();
         } else {
