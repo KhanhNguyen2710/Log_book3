@@ -22,7 +22,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     ImageView imageView;
-    Button Next_button, Prev_button,Add_button;
+    Button Forward_button, Backward_button,Add_button;
     EditText URL_input;
     Database database;
     ArrayList<String> id, urlImg;
@@ -79,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
         urlImg = new ArrayList<>();
         storeData();
 
-        Next_button = findViewById(R.id.Next_button);
-        Next_button.setOnClickListener(new View.OnClickListener() {
+        Forward_button = findViewById(R.id.Forward_button);
+        Forward_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 i ++ ;
@@ -94,8 +94,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Prev_button = findViewById(R.id.Prev_button);
-        Prev_button.setOnClickListener(new View.OnClickListener() {
+        Backward_button = findViewById(R.id.Backward_button);
+        Backward_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 i --; // -1
