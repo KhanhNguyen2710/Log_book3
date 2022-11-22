@@ -29,7 +29,6 @@ public class Database extends SQLiteOpenHelper {
         this.context = context;
     }
 
-
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + TABLE_NAME +
@@ -59,7 +58,6 @@ public class Database extends SQLiteOpenHelper {
             return;
         }
     }
-
 
     Cursor readUrlImg(){
         String query = "SELECT * FROM " + TABLE_NAME;

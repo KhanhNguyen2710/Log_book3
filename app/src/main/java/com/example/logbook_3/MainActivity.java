@@ -53,34 +53,30 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Database myDB = new Database(MainActivity.this);
-             //   boolean result = database.AddUrlImg(URL_input.getText().toString());
-
                 String url = URL_input.getText().toString();
                 myDB.AddUrlImg(url);
 
-                if (IsValidUrl(url)){
-                    if(!(url.length() ==0)){
+//url.leng == do dai cua chuoi
+                //i = id
+                if (!(url.length() == 0)){
+                    if(IsValidUrl(url)){
                         urlList.add(url);
                         i = urlList.size() - 1;
                         Picasso.get()
                                 .load(urlList.get(i))
                                 .into(imageView);
                     }else{
-                        Toast.makeText(MainActivity.this, "Url can not be empty", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Invalid link", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(MainActivity.this, "Invalid link", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Url can not be empty", Toast.LENGTH_SHORT).show();
                 }
-
-
             }
-
         });
 
         database = new Database(MainActivity.this);
         id = new ArrayList<>();
         urlImg = new ArrayList<>();
-
         storeData();
 
         Next_button = findViewById(R.id.Next_button);
